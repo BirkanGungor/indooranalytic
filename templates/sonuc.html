@@ -1,0 +1,42 @@
+<script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+<!doctype html>
+<title>Veri Analizi</title>
+{% if name %}
+  <h1>Hello {{ name }}!</h1>
+{% else %}
+ <h1><center>HEATMAP</center></h1>
+
+ <!--<script src="http://d3js.org/d3.v3.min.js"></script>-->
+
+<body style="background-color: powderblue">
+	<center><div class="resim"><img class ="image" src="{{ url_for('static', filename='imagetest.jpg') }}"></div></center>
+
+
+	<!--Deneme olarak görselleştirme ile uğraşıyorum-->
+	<!-- YAZACAĞIN JavaScript bu body tag'leri arasına gelecek. -->
+
+
+</body>
+
+{% endif %}
+
+
+<!--Fotoğrafı refresh etmeden yeniden yüklemek için yazıldı (js ve ajax kullanıldı)-->
+<script type="text/javascript">$(function() {
+   $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+   var intervalMS =2000; 
+   setInterval(function() {
+     $.ajax({
+    url: "/heatmap", 
+    cache: false, 
+    success:function(data) {
+
+       $(".image").prop("src", "{{ url_for('static', filename='imagetest.jpg') }}?cachebuster=" + new Date().getTime());
+
+    }
+  });
+
+
+   }, intervalMS);
+});</script>
+

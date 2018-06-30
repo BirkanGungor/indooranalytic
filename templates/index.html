@@ -1,0 +1,15 @@
+<!doctype html>
+<title>Veri Analizi</title>
+{% if name %}
+  <h1>Hello {{ name }}!</h1>
+{% else %}
+ <h1><center>Koordinatlar</center></h1>
+ <form action="/heatmap" method="get">
+    <button name="tikla" type="submit">Tıklayınız</button>
+</form>
+<body>
+	<center><img src="{{url_for('static', filename='bitirme_guncel_foto.jpg')}}"></center>
+</body>
+
+{% endif %}
+
