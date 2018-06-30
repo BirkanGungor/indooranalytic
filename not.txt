@@ -1,6 +1,0 @@
-pip intsall flask-mysqldb
-
-
-konsolda çalıştırmak için "python mysqldb.py" //dosyanın bulunduğu path'i vermek gerekli öncelikle.
-
-Veritabanı bağlantısı gerçekleştirildi.
